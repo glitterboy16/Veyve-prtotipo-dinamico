@@ -410,7 +410,15 @@ html, body {
 }
 .pc-onb-left {
   flex: 1;
-  background: linear-gradient(180deg, #2DCB95 0%, #1E9670 60%, #166D52 100%);
+  background-color: #1E9670;
+  background-image:
+    linear-gradient(180deg, rgba(45,203,149,0.55) 0%, rgba(30,150,112,0.85) 65%, rgba(22,109,82,0.95) 100%),
+    url('https://images.unsplash.com/photo-1488085061387-422e29b40080?auto=format&fit=crop&w=1000&q=80'),
+    url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1000&q=80'),
+    url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=80'),
+    linear-gradient(180deg, #2DCB95 0%, #1E9670 60%, #166D52 100%);
+  background-size: cover;
+  background-position: center;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -418,11 +426,22 @@ html, body {
   padding: 36px 36px 30px;
   color: #fff;
 }
+.pc-onb-left::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255,255,255,0.18) 0%, transparent 50%),
+    linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.35) 100%);
+  pointer-events: none;
+}
 .pc-onb-skyline {
   position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 60%;
-  opacity: 0.4;
+  bottom: 22%;
+  left: 0; right: 0;
+  height: 35%;
+  opacity: 0.7;
+  z-index: 1;
 }
 .pc-onb-skyline svg {
   width: 100%; height: 100%;
@@ -430,16 +449,18 @@ html, body {
 .pc-onb-left-text { position: relative; z-index: 2; }
 .pc-onb-left-text h2 {
   font-family: 'Quicksand', sans-serif;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 700;
   margin-bottom: 8px;
   letter-spacing: -0.3px;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.35);
 }
 .pc-onb-left-text p {
-  font-size: 11px;
-  opacity: 0.92;
+  font-size: 12px;
+  opacity: 0.95;
   line-height: 1.5;
-  max-width: 240px;
+  max-width: 280px;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.3);
 }
 .pc-onb-right {
   flex: 1;
@@ -1866,6 +1887,7 @@ html, body {
   <div class="nav-pill" data-target="p5"><span class="num">5</span>Resumen</div>
   <div class="nav-pill" data-target="p6"><span class="num">6</span>Formulario IA</div>
   <div class="nav-pill" data-target="p7"><span class="num">7</span>Plan accesible</div>
+  <div class="nav-pill" data-target="p8"><span class="num">8</span>Plan resumen</div>
 </div>
 
 <div class="gallery-container">
@@ -1944,7 +1966,7 @@ html, body {
               Mis Viajes
             </div>
             <div class="sidebar-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1.51-1A1.65 1.65 0 0 0 6 20l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82A1.65 1.65 0 0 0 1.7 14H1a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1-1.51A1.65 1.65 0 0 0 1.46 6l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0L4.29 3a1.65 1.65 0 0 0 1.82.33H6a1.65 1.65 0 0 0 1-1.51V1a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33L13.94 3a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V8a1.65 1.65 0 0 0 1.51 1H22a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.09A1.65 1.65 0 0 0 9 3.09V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>
               Configuración
             </div>
           </div>
@@ -2054,7 +2076,7 @@ html, body {
               Mis Viajes
             </div>
             <div class="sidebar-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4 12H2M22 12h-2"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.09A1.65 1.65 0 0 0 9 3.09V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>
               Configuración
             </div>
           </div>
@@ -2157,7 +2179,7 @@ html, body {
             <div class="sidebar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-9 9 9v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Inicio</div>
             <div class="sidebar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7l10-5 10 5-10 5z"/></svg>Itinerarios</div>
             <div class="sidebar-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>Mis Viajes</div>
-            <div class="sidebar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg>Configuración</div>
+            <div class="sidebar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.09A1.65 1.65 0 0 0 9 3.09V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>Configuración</div>
           </div>
           <div class="sidebar-user">
             <div class="sidebar-avatar">A</div>
@@ -2253,7 +2275,7 @@ html, body {
             <div class="sidebar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-9 9 9v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Inicio</div>
             <div class="sidebar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7l10-5 10 5-10 5z"/></svg>Itinerarios</div>
             <div class="sidebar-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>Mis Viajes</div>
-            <div class="sidebar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg>Configuración</div>
+            <div class="sidebar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.09A1.65 1.65 0 0 0 9 3.09V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>Configuración</div>
           </div>
           <div class="sidebar-user">
             <div class="sidebar-avatar">A</div>
@@ -2344,7 +2366,7 @@ html, body {
             <div class="sidebar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-9 9 9v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Inicio</div>
             <div class="sidebar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7l10-5 10 5-10 5z"/></svg>Itinerarios</div>
             <div class="sidebar-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>Mis Viajes</div>
-            <div class="sidebar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg>Configuración</div>
+            <div class="sidebar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.09A1.65 1.65 0 0 0 9 3.09V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>Configuración</div>
           </div>
           <div class="sidebar-user">
             <div class="sidebar-avatar">A</div>
@@ -2449,7 +2471,7 @@ html, body {
             <div class="sidebar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-9 9 9v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Inicio</div>
             <div class="sidebar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7l10-5 10 5-10 5z"/></svg>Itinerarios</div>
             <div class="sidebar-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>Mis Viajes</div>
-            <div class="sidebar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg>Configuración</div>
+            <div class="sidebar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.09A1.65 1.65 0 0 0 9 3.09V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>Configuración</div>
           </div>
           <div class="sidebar-user">
             <div class="sidebar-avatar">A</div>
@@ -2573,12 +2595,110 @@ html, body {
     <div class="pc-caption"><span class="num">7</span>Plan personalizado con accesibilidad motora</div>
   </div>
 
+  <!-- ========== SCREEN 8 — PLAN ACCESIBILIDAD (RESUMEN) ========== -->
+  <div class="pc-slot" id="p8">
+    <div class="browser">
+      <div class="browser-bar">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">veyve.app/itinerario/plan-resumen</div>
+      </div>
+      <div class="app-shell">
+        <div class="sidebar">
+          <div class="sidebar-top">
+            <div class="sidebar-brand">Viajes</div>
+            <div class="sidebar-close">×</div>
+          </div>
+          <div class="sidebar-menu">
+            <div class="sidebar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-9 9 9v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Inicio</div>
+            <div class="sidebar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7l10-5 10 5-10 5z"/></svg>Itinerarios</div>
+            <div class="sidebar-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>Mis Viajes</div>
+            <div class="sidebar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.09A1.65 1.65 0 0 0 9 3.09V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>Configuración</div>
+          </div>
+          <div class="sidebar-user">
+            <div class="sidebar-avatar">A</div>
+            <div class="sidebar-user-text"><strong>Anai</strong><span>Ver perfil</span></div>
+          </div>
+        </div>
+        <div class="main">
+          <div class="topbar">
+            <div class="menu-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+            </div>
+            <div class="topbar-title">Tu Itinerario</div>
+            <div class="topbar-action">Básico</div>
+          </div>
+          <div class="pc-plan-body">
+            <div class="pc-plan-tags" style="justify-content:center;gap:14px">
+              <span class="pc-plan-tag-orange">Personalizado · Pareja · 4 días</span>
+              <div class="pc-plan-acc-pill" style="margin-bottom:0">
+                <span class="ico">♿</span>
+                Motora
+              </div>
+            </div>
+            <div class="pc-day-banner" style="margin-top:14px">Día 4 — Patrimonio romano</div>
+            <div class="pc-plan-stops">
+              <div class="pc-plan-card">
+                <div class="pc-plan-card-num">1</div>
+                <div class="pc-plan-card-expand">⛶</div>
+                <h4>Templo de Diana</h4>
+                <div class="pc-plan-card-meta"><span>Patrimonio · Mañana</span><span>~1h 30min</span></div>
+                <p class="pc-plan-card-desc">Sus columnas llevan en pie más de 2 000 años. Uno de los templos romanos más completos de la Península Ibérica…</p>
+                <a class="pc-plan-card-link" href="#" onclick="event.preventDefault()">Ver más info →</a>
+              </div>
+              <div class="pc-plan-card">
+                <div class="pc-plan-card-num">2</div>
+                <div class="pc-plan-card-expand">⛶</div>
+                <h4>Museo Arte Romano</h4>
+                <div class="pc-plan-card-meta"><span>Patrimonio · Mañana</span><span>~1h</span></div>
+                <p class="pc-plan-card-desc">La mayor colección de arte romano de España. Diseñado por Rafael Moneo en 1986. Sus galerías acogen esculturas, mosaicos y monedas…</p>
+                <a class="pc-plan-card-link" href="#" onclick="event.preventDefault()">Ver más info →</a>
+              </div>
+              <div class="pc-plan-card ai">
+                <div class="pc-plan-card-num" style="background:var(--naranja-cta)">3</div>
+                <div class="pc-plan-card-expand">⛶</div>
+                <h4>Almuerzo Típico</h4>
+                <div class="pc-plan-card-meta"><span>Sugerido por la IA</span></div>
+                <span class="pc-plan-ai-tag">Sugerido por IA</span>
+                <p class="pc-plan-card-desc" style="margin-top:8px">Sus columnas llevan en pie más de 2 000 años. Uno de los templos romanos más completos de la Península Ibérica…</p>
+                <a class="pc-plan-card-link" href="#" onclick="event.preventDefault()">Ver más info →</a>
+              </div>
+              <div class="pc-plan-card">
+                <div class="pc-plan-card-num">4</div>
+                <div class="pc-plan-card-expand">−</div>
+                <h4>Templo de Diana</h4>
+                <div class="pc-plan-card-meta"><span>Patrimonio · Mañana</span><span>~1h 30min</span></div>
+                <p class="pc-plan-card-desc">Sus columnas llevan en pie más de 2 000 años. Uno de los templos romanos más completos de la Península Ibérica…</p>
+                <a class="pc-plan-card-link" href="#" onclick="event.preventDefault()">Ver más info →</a>
+              </div>
+              <div class="pc-plan-card">
+                <div class="pc-plan-card-num">5</div>
+                <div class="pc-plan-card-expand">⛶</div>
+                <h4>Alcazaba</h4>
+                <div class="pc-plan-card-meta"><span>Patrimonio · Mañana</span><span>~1h 30min</span></div>
+                <p class="pc-plan-card-desc">La fortaleza árabe más grande de España, construida en el s. IX sobre restos romanos…</p>
+                <a class="pc-plan-card-link" href="#" onclick="event.preventDefault()">Ver más info →</a>
+              </div>
+            </div>
+            <div class="pc-plan-summary-row">
+              <span class="pc-plan-summary">3 días · 6 paradas · 1 restaurantes · Pareja · ♿ Motora</span>
+            </div>
+            <div class="pc-itin-actions">
+              <button class="pc-btn-large orange" onclick="goTo('p7')">Personalizar</button>
+              <button class="pc-btn-large green" onclick="goTo('p1')">Guardar viaje</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pc-caption"><span class="num">8</span>Plan accesibilidad — resumen sin desglose</div>
+  </div>
+
 </div>
 </div>
 
 <div class="landing-footer">
   <strong>Veyve · Versión escritorio</strong><br/>
-  Diseño extraído de Figma · 7 vistas PC con sidebar y top bar verde · Layouts en grid<br/>
+  Diseño extraído de Figma · 8 vistas PC con sidebar y top bar verde · Layouts en grid<br/>
   Usa el conmutador superior para volver a la versión móvil
 </div>
 
