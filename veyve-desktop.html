@@ -1,0 +1,2611 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veyve — Versión Escritorio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --teal-primary: #24A59E;
+  --verde-principal: #34C89B;
+  --verde-medio: #2D9A6A;
+  --verde-claro: #A8DFC0;
+  --verde-suave: #E6F7EE;
+  --naranja-cta: #F97B2B;
+  --naranja-suave: #FEE8D6;
+  --azul-visual: #DBEAFE;
+  --purpura-cognitivo: #EDE9FE;
+  --rosa-motora: #F87DA8;
+  --neutral-1: #1C1243;
+  --neutral-2: #A29EB6;
+  --gris-suave: #F5F7F8;
+  --semantic-red: #FF6A5D;
+  --semantic-warn: #F2C94C;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+html, body {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: radial-gradient(ellipse at top, #0e2f2a 0%, #081c18 60%, #03100d 100%);
+  min-height: 100vh;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* ===== Landing header ===== */
+.landing-header {
+  text-align: center;
+  padding: 38px 24px 14px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.brand-logo {
+  width: 44px; height: 44px;
+  border-radius: 13px;
+  background: var(--verde-principal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(52, 200, 155, 0.35);
+  color: #fff;
+  font-size: 22px;
+}
+.brand-name {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.landing-header h1 {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 12px;
+  background: linear-gradient(180deg, #ffffff 0%, #9ad9c0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.landing-header p {
+  font-size: 15px;
+  color: #b8d4cb;
+  max-width: 620px;
+  margin: 0 auto;
+  line-height: 1.55;
+}
+
+/* ===== Mode switch ===== */
+.mode-switch {
+  display: flex;
+  justify-content: center;
+  margin: 18px auto 8px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 999px;
+  padding: 4px;
+  gap: 4px;
+  width: fit-content;
+  backdrop-filter: blur(8px);
+}
+.mode-switch a {
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  padding: 8px 18px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+.mode-switch a:hover { color: #fff; }
+.mode-switch a.active {
+  background: linear-gradient(180deg, #34c89b 0%, #24a59e 100%);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(52,200,155,0.35);
+}
+.mode-switch svg { width: 14px; height: 14px; }
+
+/* ===== Nav pills ===== */
+.nav-pills {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 14px 16px 6px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.nav-pill {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #cfeae0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  letter-spacing: 0.1px;
+}
+.nav-pill:hover { background: rgba(255,255,255,0.12); color: #fff; }
+.nav-pill.active {
+  background: var(--verde-principal);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 16px rgba(52,200,155,0.4);
+}
+.nav-pill .num {
+  display: inline-block;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.18);
+  margin-right: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 18px;
+}
+.nav-pill.active .num { background: rgba(255,255,255,0.35); }
+
+/* ===== Gallery ===== */
+.gallery-container {
+  position: relative;
+  margin-top: 22px;
+  padding: 10px 0 60px;
+}
+.gallery {
+  display: flex;
+  gap: 36px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 26px 6vw 40px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.gallery::-webkit-scrollbar { display: none; }
+
+.pc-slot {
+  flex: 0 0 auto;
+  scroll-snap-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.pc-caption {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #cfeae0;
+  font-size: 13px;
+  font-weight: 500;
+}
+.pc-caption .num {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--verde-principal);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== Desktop browser frame ===== */
+.browser {
+  width: 1100px;
+  max-width: 92vw;
+  height: 660px;
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow:
+    0 30px 80px rgba(0,0,0,0.5),
+    0 8px 24px rgba(0,0,0,0.3),
+    inset 0 0 0 1px rgba(255,255,255,0.08);
+  display: flex;
+  flex-direction: column;
+  color: var(--neutral-1);
+}
+.browser-bar {
+  height: 36px;
+  background: #ECEFF2;
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  gap: 8px;
+  flex-shrink: 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.browser-dots { display: flex; gap: 6px; }
+.browser-dots span {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+}
+.browser-dots span:nth-child(1) { background: #ff5f57; }
+.browser-dots span:nth-child(2) { background: #febc2e; }
+.browser-dots span:nth-child(3) { background: #28c840; }
+.browser-url {
+  background: #fff;
+  border-radius: 6px;
+  flex: 1;
+  height: 22px;
+  margin-left: 14px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  font-size: 11px;
+  color: #6e7785;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+.browser-url::before {
+  content: '🔒';
+  margin-right: 8px;
+  font-size: 9px;
+}
+.app-shell {
+  flex: 1;
+  display: flex;
+  background: var(--gris-suave);
+  overflow: hidden;
+}
+
+/* ===== Sidebar ===== */
+.sidebar {
+  width: 96px;
+  background: linear-gradient(180deg, #34C89B 0%, #2BB084 100%);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  position: relative;
+}
+.sidebar-top {
+  padding: 16px 14px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sidebar-brand {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+.sidebar-close {
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  cursor: pointer;
+}
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  padding: 0 8px;
+  gap: 2px;
+  flex: 1;
+}
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 10px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  color: rgba(255,255,255,0.92);
+  transition: background 0.15s ease;
+}
+.sidebar-item:hover { background: rgba(255,255,255,0.1); }
+.sidebar-item.active {
+  background: rgba(255,255,255,0.22);
+  color: #fff;
+  font-weight: 600;
+}
+.sidebar-item svg { width: 12px; height: 12px; flex-shrink: 0; }
+.sidebar-user {
+  padding: 12px 12px 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-top: 1px solid rgba(255,255,255,0.18);
+  margin-top: auto;
+}
+.sidebar-avatar {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.95);
+  color: var(--verde-medio);
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sidebar-user-text { line-height: 1.2; }
+.sidebar-user-text strong {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+}
+.sidebar-user-text span {
+  font-size: 8px;
+  opacity: 0.85;
+}
+
+/* ===== Main panel ===== */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  position: relative;
+  background: var(--gris-suave);
+}
+.main::-webkit-scrollbar { width: 6px; }
+.main::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 3px; }
+
+.topbar {
+  height: 44px;
+  background: linear-gradient(180deg, #34C89B 0%, #2BB084 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 0 22px;
+  flex-shrink: 0;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+.topbar .menu-icon {
+  width: 16px; height: 16px;
+  margin-right: 12px;
+  cursor: pointer;
+}
+.topbar .topbar-title { flex: 1; font-weight: 600; font-size: 14px; }
+.topbar .topbar-action {
+  background: rgba(255,255,255,0.16);
+  border: 1px solid rgba(255,255,255,0.32);
+  border-radius: 999px;
+  padding: 4px 14px;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ============================================== */
+/* SCREEN 1: ONBOARDING PC                        */
+/* ============================================== */
+.pc-onb {
+  display: flex;
+  flex: 1;
+  background: #fff;
+  height: 100%;
+}
+.pc-onb-left {
+  flex: 1;
+  background: linear-gradient(180deg, #2DCB95 0%, #1E9670 60%, #166D52 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding: 36px 36px 30px;
+  color: #fff;
+}
+.pc-onb-skyline {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 60%;
+  opacity: 0.4;
+}
+.pc-onb-skyline svg {
+  width: 100%; height: 100%;
+}
+.pc-onb-left-text { position: relative; z-index: 2; }
+.pc-onb-left-text h2 {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: -0.3px;
+}
+.pc-onb-left-text p {
+  font-size: 11px;
+  opacity: 0.92;
+  line-height: 1.5;
+  max-width: 240px;
+}
+.pc-onb-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 80px;
+  color: var(--neutral-1);
+}
+.pc-onb-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--verde-principal);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  width: fit-content;
+  margin-bottom: 20px;
+}
+.pc-onb-pill svg { width: 11px; height: 11px; }
+.pc-onb h1 {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.18;
+  margin-bottom: 12px;
+  letter-spacing: -0.4px;
+}
+.pc-onb-sub {
+  font-size: 12px;
+  color: var(--neutral-2);
+  line-height: 1.55;
+  max-width: 360px;
+  margin-bottom: 22px;
+}
+.pc-onb-list { list-style: none; margin-bottom: 26px; }
+.pc-onb-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--neutral-1);
+  font-weight: 500;
+  padding: 7px 0;
+}
+.pc-onb-check {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--verde-suave);
+  color: var(--verde-medio);
+  font-size: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pc-onb-cta {
+  background: linear-gradient(180deg, #34C89B 0%, #1F9670 100%);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 14px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 360px;
+  box-shadow: 0 6px 18px rgba(52,200,155,0.3);
+}
+.pc-onb-cta:hover { filter: brightness(1.05); }
+.pc-onb-link {
+  text-align: center;
+  font-size: 11px;
+  color: var(--neutral-2);
+  margin-top: 14px;
+  max-width: 360px;
+}
+.pc-onb-link a {
+  color: var(--teal-primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+.pc-onb-paging {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 14px;
+}
+.pc-onb-paging span {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(36,165,158,0.25);
+}
+.pc-onb-paging span.active {
+  width: 18px;
+  border-radius: 4px;
+  background: var(--teal-primary);
+}
+
+/* ============================================== */
+/* SCREEN 2: INICIO PC                            */
+/* ============================================== */
+.pc-home-hero {
+  height: 180px;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.4) 100%),
+    radial-gradient(ellipse at 70% 40%, #d65b8a 0%, #8a1f4a 60%, #4d0d2b 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 36px 60px;
+  color: #fff;
+}
+.pc-home-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -8px; left: 0; right: 0;
+  height: 60px;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1100 80' preserveAspectRatio='none'><path fill='rgba(0,0,0,0.4)' d='M0,40 L40,30 L80,45 L120,25 L160,42 L200,28 L240,38 L280,18 L320,40 L360,22 L400,38 L440,15 L480,32 L520,18 L560,40 L600,12 L640,30 L680,16 L720,36 L760,10 L800,30 L840,20 L880,38 L920,15 L960,32 L1000,22 L1040,40 L1100,30 L1100,80 L0,80 Z'/></svg>") center bottom / cover no-repeat;
+  z-index: 1;
+}
+.pc-home-hero h1 {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  position: relative; z-index: 2;
+}
+.pc-home-hero p {
+  font-size: 12px;
+  opacity: 0.92;
+  margin-bottom: 14px;
+  position: relative; z-index: 2;
+}
+.pc-home-search {
+  background: #fff;
+  border-radius: 12px;
+  padding: 8px 8px 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 460px;
+  position: relative; z-index: 2;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+.pc-home-search svg { width: 14px; height: 14px; color: var(--neutral-2); }
+.pc-home-search input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  color: var(--neutral-1);
+  padding: 6px 0;
+}
+.pc-home-search input::placeholder { color: var(--neutral-2); }
+.pc-home-filter {
+  width: 30px; height: 30px;
+  background: var(--teal-primary);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  cursor: pointer;
+}
+.pc-home-filter svg { width: 13px; height: 13px; }
+
+.pc-home-body { padding: 24px 60px 30px; }
+.pc-home-tabs {
+  display: flex;
+  gap: 22px;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  padding-bottom: 8px;
+  margin-bottom: 18px;
+}
+.pc-home-tab {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--neutral-2);
+  cursor: pointer;
+  padding: 4px 0;
+  position: relative;
+}
+.pc-home-tab.active {
+  color: var(--teal-primary);
+  font-weight: 600;
+}
+.pc-home-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -9px; left: 0; right: 0;
+  height: 2px;
+  background: var(--teal-primary);
+  border-radius: 2px;
+}
+
+.pc-home-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.pc-home-card {
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.pc-home-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.1);
+}
+.pc-home-card-img {
+  height: 130px;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+.pc-home-card-img.caceres {
+  background-color: #b03366;
+  background-image:
+    linear-gradient(180deg, rgba(255,107,150,0.4) 0%, rgba(244,128,80,0.4) 100%),
+    url('https://images.unsplash.com/photo-1551867633-194f125bddfa?auto=format&fit=crop&w=600&q=80'),
+    linear-gradient(180deg, #ff6b96 0%, #f48050 100%);
+}
+.pc-home-card-img.monteria {
+  background-color: #b03366;
+  background-image:
+    linear-gradient(180deg, rgba(255,107,150,0.4) 0%, rgba(244,128,80,0.4) 100%),
+    url('https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=600&q=80'),
+    linear-gradient(180deg, #ff6b96 0%, #f48050 100%);
+}
+.pc-home-card-rating {
+  position: absolute;
+  top: 10px; right: 10px;
+  background: rgba(255,255,255,0.95);
+  border-radius: 999px;
+  padding: 3px 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--neutral-1);
+}
+.pc-home-card-rating::before {
+  content: '★';
+  color: #ff8a3d;
+  font-size: 10px;
+}
+.pc-home-card-info {
+  padding: 12px 14px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.pc-home-card-info h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--neutral-1);
+  margin-bottom: 2px;
+}
+.pc-home-card-info p {
+  font-size: 10px;
+  color: var(--neutral-2);
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.pc-home-card-info p::before { content: '📍'; font-size: 9px; }
+.pc-home-card-rating-side {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--neutral-1);
+}
+.pc-home-card-rating-side::before {
+  content: '★';
+  color: #ff8a3d;
+  margin-right: 3px;
+}
+
+.pc-home-section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.pc-home-section-head h2 {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--neutral-1);
+}
+.pc-home-section-head a {
+  font-size: 11px;
+  color: var(--teal-primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+.pc-home-features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.pc-feat-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+.pc-feat-card:hover { transform: translateY(-2px); }
+.pc-feat-card-img {
+  height: 90px;
+  background-size: cover;
+  background-position: center;
+  background-color: #cdd6e0;
+}
+.pc-feat-card-img.cartagena {
+  background-image: url('https://images.unsplash.com/photo-1583531352515-8884af319dc7?auto=format&fit=crop&w=400&q=80'), linear-gradient(135deg, #e8a87c 0%, #c07a4e 100%);
+}
+.pc-feat-card-img.bali {
+  background-image: url('https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&q=80'), linear-gradient(135deg, #6dd5c4 0%, #2d9aa0 100%);
+}
+.pc-feat-card-img.santorini {
+  background-image: url('https://images.unsplash.com/photo-1570077188668-f6f0e3a6c10d?auto=format&fit=crop&w=400&q=80'), linear-gradient(135deg, #87ceeb 0%, #4682b4 100%);
+}
+.pc-feat-card-img.machu {
+  background-image: url('https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&w=400&q=80'), linear-gradient(135deg, #8fbc8f 0%, #556b2f 100%);
+}
+.pc-feat-card-info { padding: 10px 12px 12px; }
+.pc-feat-card-info h4 {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--neutral-1);
+  margin-bottom: 2px;
+}
+.pc-feat-card-info p {
+  font-size: 9px;
+  color: var(--neutral-2);
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.pc-feat-card-info p::before { content: '📍'; font-size: 8px; }
+
+/* ============================================== */
+/* SCREEN 3: RUTA / TEATRO ROMANO PC              */
+/* ============================================== */
+.pc-detail-hero {
+  height: 240px;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.3) 100%),
+    url('https://images.unsplash.com/photo-1555993539-1732b0258235?auto=format&fit=crop&w=1200&q=80'),
+    url('https://images.unsplash.com/photo-1564594326930-17381130fb88?auto=format&fit=crop&w=1200&q=80'),
+    linear-gradient(135deg, #c9a47a 0%, #6b5232 100%);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  padding: 22px 60px;
+}
+.pc-detail-back {
+  width: 32px; height: 32px;
+  background: rgba(255,255,255,0.95);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--neutral-1);
+  position: absolute;
+  top: 22px;
+  left: 60px;
+}
+.pc-detail-back svg { width: 14px; height: 14px; }
+.pc-detail-fav {
+  position: absolute;
+  top: 22px; right: 60px;
+  width: 32px; height: 32px;
+  background: rgba(255,255,255,0.95);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--verde-medio);
+}
+.pc-detail-fav svg { width: 14px; height: 14px; fill: currentColor; }
+.pc-detail-hero-title {
+  position: absolute;
+  bottom: 22px;
+  left: 60px;
+  right: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  color: #fff;
+}
+.pc-detail-hero-title h1 {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+  margin-bottom: 4px;
+}
+.pc-detail-rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.pc-detail-rating::before {
+  content: '★';
+  color: #ff8a3d;
+  font-size: 14px;
+}
+.pc-detail-price {
+  text-align: right;
+  flex-shrink: 0;
+}
+.pc-detail-price h2 {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+.pc-detail-price small {
+  display: block;
+  font-size: 9px;
+  opacity: 0.85;
+}
+
+.pc-detail-body {
+  padding: 22px 60px 32px;
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 26px;
+}
+.pc-detail-stats {
+  display: flex;
+  gap: 22px;
+  margin-bottom: 18px;
+}
+.pc-detail-stat {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.pc-detail-stat-ico {
+  width: 32px; height: 32px;
+  background: var(--naranja-suave);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--naranja-cta);
+  font-size: 14px;
+}
+.pc-detail-stat-ico.green { background: var(--verde-suave); color: var(--verde-medio); }
+.pc-detail-stat-ico.yellow { background: #FEF6D6; color: #D8A721; }
+.pc-detail-stat-text strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--neutral-1);
+  line-height: 1.2;
+}
+.pc-detail-stat-text span {
+  font-size: 9px;
+  color: var(--neutral-2);
+}
+
+.pc-detail-tabs {
+  display: flex;
+  gap: 24px;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  padding-bottom: 8px;
+  margin-bottom: 14px;
+}
+.pc-detail-tab {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--neutral-2);
+  cursor: pointer;
+  padding: 4px 0;
+  position: relative;
+}
+.pc-detail-tab.active {
+  color: var(--teal-primary);
+  font-weight: 600;
+}
+.pc-detail-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -9px; left: 0; right: 0;
+  height: 2px;
+  background: var(--teal-primary);
+  border-radius: 2px;
+}
+.pc-detail-desc {
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--neutral-1);
+  margin-bottom: 12px;
+}
+
+.pc-detail-gallery h3 {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--neutral-1);
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.pc-detail-gallery-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.pc-detail-gallery-row > div {
+  height: 78px;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+  background-color: #b08856;
+  background-image: url('https://images.unsplash.com/photo-1555993539-1732b0258235?auto=format&fit=crop&w=400&q=80');
+}
+
+.pc-detail-side-card {
+  background: linear-gradient(180deg, #34C89B 0%, #1F9670 100%);
+  border-radius: 14px;
+  padding: 18px 18px 16px;
+  color: #fff;
+  margin-bottom: 12px;
+  box-shadow: 0 6px 18px rgba(52,200,155,0.25);
+}
+.pc-detail-side-card h3 {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.pc-detail-side-card ul {
+  list-style: none;
+  margin-bottom: 14px;
+}
+.pc-detail-side-card li {
+  font-size: 10px;
+  padding: 4px 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
+}
+.pc-detail-side-card li::before {
+  content: '✓';
+  width: 12px; height: 12px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 50%;
+  font-size: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.pc-side-cta {
+  width: 100%;
+  background: #fff;
+  color: var(--verde-medio);
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom: 6px;
+}
+.pc-side-cta.outline {
+  background: transparent;
+  border: 1.5px solid rgba(255,255,255,0.7);
+  color: #fff;
+}
+.pc-detail-info-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+}
+.pc-detail-info-card h4 {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--neutral-1);
+  margin-bottom: 6px;
+}
+.pc-detail-info-card p {
+  font-size: 10px;
+  color: var(--neutral-2);
+  line-height: 1.4;
+}
+
+/* ============================================== */
+/* SCREEN 4: MODAL AÑADIR PARADA                  */
+/* ============================================== */
+.pc-modal-bg {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gris-suave);
+  padding: 30px;
+  overflow-y: auto;
+}
+.pc-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(28,18,67,0.45);
+  backdrop-filter: blur(2px);
+}
+.pc-modal-window {
+  position: relative;
+  z-index: 2;
+  background: #fff;
+  width: 560px;
+  max-width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  max-height: 540px;
+}
+.pc-modal-head {
+  background: linear-gradient(180deg, #34C89B 0%, #1F9670 100%);
+  padding: 14px 18px;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.pc-modal-head h3 {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+}
+.pc-modal-head p {
+  font-size: 10px;
+  opacity: 0.92;
+}
+.pc-modal-close {
+  width: 24px; height: 24px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 10px;
+}
+.pc-modal-search {
+  margin: 14px 18px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 10px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.pc-modal-search svg { width: 12px; height: 12px; color: var(--neutral-2); }
+.pc-modal-search input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  color: var(--neutral-1);
+}
+.pc-modal-list {
+  padding: 0 18px;
+  flex: 1;
+  overflow-y: auto;
+}
+.pc-modal-item {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  gap: 12px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.pc-modal-item:hover { border-color: var(--verde-principal); box-shadow: 0 4px 14px rgba(52,200,155,0.15); }
+.pc-modal-item-pin {
+  width: 38px; height: 38px;
+  border-radius: 10px;
+  background: var(--verde-suave);
+  color: var(--verde-medio);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.pc-modal-item-pin svg { width: 16px; height: 16px; }
+.pc-modal-item-body { flex: 1; min-width: 0; }
+.pc-modal-item-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+.pc-modal-item-head h4 {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--neutral-1);
+}
+.pc-modal-item-rating {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--neutral-1);
+}
+.pc-modal-item-rating::before {
+  content: '★';
+  color: #ff8a3d;
+  margin-right: 2px;
+}
+.pc-modal-item-meta {
+  font-size: 9px;
+  color: var(--neutral-2);
+  display: flex;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.pc-modal-item-meta span:not(:first-child)::before {
+  content: '·';
+  margin-right: 8px;
+}
+.pc-modal-item-desc {
+  font-size: 10px;
+  color: var(--neutral-1);
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+.pc-modal-item-time {
+  font-size: 9px;
+  color: var(--neutral-2);
+}
+.pc-modal-item-time::before { content: '⏱ '; }
+.pc-modal-foot {
+  padding: 12px 18px 18px;
+  border-top: 1px solid rgba(0,0,0,0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.pc-modal-foot-text {
+  font-size: 10px;
+  color: var(--neutral-2);
+}
+.pc-modal-foot-buttons { display: flex; gap: 8px; }
+.pc-modal-btn {
+  border: 1px solid rgba(0,0,0,0.12);
+  background: #fff;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--neutral-1);
+  cursor: pointer;
+}
+.pc-modal-btn.primary {
+  background: var(--verde-suave);
+  color: var(--verde-medio);
+  border-color: transparent;
+}
+.pc-modal-btn.disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ============================================== */
+/* SCREEN 5: RESUMEN VIAJE PC                     */
+/* ============================================== */
+.pc-itin-body {
+  padding: 22px 50px 30px;
+}
+.pc-itin-title {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--neutral-1);
+  margin-bottom: 4px;
+}
+.pc-itin-sub {
+  font-size: 11px;
+  color: var(--verde-medio);
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+.pc-itin-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--neutral-2);
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+}
+.pc-day-picker {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+.pc-day-pill {
+  width: 38px; height: 34px;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--neutral-1);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.pc-day-pill:hover { border-color: var(--verde-principal); }
+.pc-day-pill.active {
+  background: var(--verde-medio);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 10px rgba(45,154,106,0.3);
+}
+.pc-day-pill.add { color: var(--verde-medio); font-size: 16px; }
+
+.pc-day-banner {
+  background: linear-gradient(180deg, #34C89B 0%, #1F9670 100%);
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: 10px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 18px;
+  box-shadow: 0 6px 16px rgba(52,200,155,0.25);
+}
+
+.pc-stops-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+.pc-stop-card {
+  background: var(--verde-suave);
+  border: 1px solid rgba(52,200,155,0.3);
+  border-radius: 14px;
+  padding: 14px 16px 12px 44px;
+  position: relative;
+}
+.pc-stop-num {
+  position: absolute;
+  left: -16px; top: 14px;
+  width: 32px; height: 32px;
+  background: var(--verde-medio);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(45,154,106,0.3);
+}
+.pc-stop-expand {
+  position: absolute;
+  top: 10px; right: 10px;
+  width: 22px; height: 22px;
+  background: #fff;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: var(--neutral-2);
+  cursor: pointer;
+}
+.pc-stop-card h4 {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--neutral-1);
+  margin-bottom: 4px;
+}
+.pc-stop-meta {
+  font-size: 10px;
+  color: var(--neutral-2);
+  display: flex;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.pc-stop-meta span:not(:first-child)::before {
+  content: '⏱';
+  margin-right: 4px;
+}
+.pc-stop-card p {
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--neutral-1);
+  margin-bottom: 8px;
+}
+.pc-stop-card a {
+  font-size: 10px;
+  color: var(--verde-medio);
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.pc-stop-card a::before {
+  content: '✓';
+  color: var(--verde-medio);
+  font-weight: 700;
+}
+
+.pc-stop-add-btn {
+  background: linear-gradient(180deg, #ff8eb8 0%, #f7679f 100%);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 22px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto 18px;
+  box-shadow: 0 6px 14px rgba(247,103,159,0.3);
+}
+.pc-stop-add-btn::before { content: '+ '; font-weight: 700; }
+
+.pc-itin-actions {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+}
+.pc-btn-large {
+  border: none;
+  border-radius: 8px;
+  padding: 11px 36px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+.pc-btn-large.orange {
+  background: linear-gradient(180deg, #FE8B47 0%, #F26321 100%);
+  color: #fff;
+  box-shadow: 0 6px 14px rgba(249,123,43,0.3);
+}
+.pc-btn-large.green {
+  background: linear-gradient(180deg, #34C89B 0%, #1F9670 100%);
+  color: #fff;
+  box-shadow: 0 6px 14px rgba(52,200,155,0.3);
+}
+
+/* ============================================== */
+/* SCREEN 6: FORMULARIO IA PC                     */
+/* ============================================== */
+.pc-form-body {
+  padding: 22px 50px 30px;
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 30px;
+}
+.pc-form-pill {
+  display: inline-block;
+  background: var(--naranja-cta);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: 999px;
+  letter-spacing: 0.3px;
+  margin-bottom: 10px;
+}
+.pc-form-h1 {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--neutral-1);
+  margin-bottom: 4px;
+}
+.pc-form-sub {
+  font-size: 11px;
+  color: var(--verde-medio);
+  font-weight: 500;
+  margin-bottom: 18px;
+}
+.pc-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.pc-chip {
+  background: #fff;
+  border: 1.5px solid rgba(52,200,155,0.4);
+  border-radius: 999px;
+  padding: 7px 16px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--verde-medio);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.pc-chip:hover { background: var(--verde-suave); }
+.pc-chip.active {
+  background: var(--verde-medio);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 10px rgba(45,154,106,0.25);
+}
+
+.pc-form-section h4 {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--neutral-2);
+  letter-spacing: 0.6px;
+  margin: 14px 0 8px;
+}
+.pc-form-section h4:first-child { margin-top: 0; }
+
+.pc-acc-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.pc-acc-title .ico {
+  width: 22px; height: 22px;
+  background: var(--verde-medio);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+.pc-acc-title h3 {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--neutral-1);
+}
+.pc-acc-title small {
+  font-size: 9px;
+  color: var(--neutral-2);
+  font-weight: 500;
+  margin-left: 4px;
+}
+
+.pc-acc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.pc-acc-card {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 10px;
+  padding: 16px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.pc-acc-card:hover {
+  border-color: var(--verde-principal);
+  background: var(--verde-suave);
+}
+.pc-acc-card .ico {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.pc-acc-card.visual .ico { background: var(--azul-visual); color: #2563eb; }
+.pc-acc-card.auditiva .ico { background: var(--purpura-cognitivo); color: #7c3aed; }
+.pc-acc-card.motora .ico { background: #FCE7F3; color: #db2777; }
+.pc-acc-card.cognitiva .ico { background: var(--verde-suave); color: var(--verde-medio); }
+.pc-acc-card span {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--neutral-1);
+}
+
+.pc-form-textarea {
+  background: var(--verde-suave);
+  border: 1px solid rgba(52,200,155,0.3);
+  border-radius: 10px;
+  padding: 14px;
+  width: 100%;
+  height: 90px;
+  resize: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  color: var(--neutral-1);
+  outline: none;
+}
+.pc-form-textarea::placeholder { color: var(--verde-medio); opacity: 0.7; }
+
+.pc-form-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+/* ============================================== */
+/* SCREEN 7: PLAN ACCESIBILIDAD PERSONALIZADO     */
+/* ============================================== */
+.pc-plan-body {
+  padding: 22px 50px 30px;
+}
+.pc-plan-tags {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+.pc-plan-tag-orange {
+  background: linear-gradient(180deg, #FE8B47 0%, #F26321 100%);
+  color: #fff;
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-size: 11px;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(249,123,43,0.3);
+}
+.pc-plan-notice {
+  background: var(--naranja-suave);
+  border-radius: 12px;
+  padding: 10px 14px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  flex: 1;
+  min-width: 280px;
+  border: 1px solid rgba(249,123,43,0.2);
+}
+.pc-plan-notice-ico {
+  width: 28px; height: 28px;
+  background: var(--azul-visual);
+  border-radius: 8px;
+  color: #2563eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.pc-plan-notice strong {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  color: #b8410d;
+  margin-bottom: 2px;
+}
+.pc-plan-notice p {
+  font-size: 9px;
+  line-height: 1.4;
+  color: #71370d;
+  font-weight: 500;
+}
+.pc-plan-acc-pill {
+  background: linear-gradient(180deg, #FF6E9F 0%, #E5347E 100%);
+  color: #fff;
+  border-radius: 999px;
+  padding: 8px 16px 8px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 12px rgba(229,52,126,0.3);
+}
+.pc-plan-acc-pill .ico {
+  width: 18px; height: 18px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+}
+
+.pc-plan-stops {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.pc-plan-card {
+  background: var(--verde-suave);
+  border: 1px solid rgba(52,200,155,0.3);
+  border-radius: 14px;
+  padding: 14px 14px 12px 36px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.pc-plan-card.ai {
+  background: linear-gradient(180deg, #FFF6EB 0%, #FFEEDC 100%);
+  border-color: rgba(249,123,43,0.3);
+}
+.pc-plan-card-num {
+  position: absolute;
+  left: -14px; top: 12px;
+  width: 28px; height: 28px;
+  background: var(--verde-medio);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pc-plan-card-expand {
+  position: absolute;
+  top: 8px; right: 8px;
+  width: 20px; height: 20px;
+  background: #fff;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: var(--neutral-2);
+  cursor: pointer;
+}
+.pc-plan-card h4 {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--neutral-1);
+  margin-bottom: 3px;
+}
+.pc-plan-card-meta {
+  font-size: 9px;
+  color: var(--neutral-2);
+  display: flex;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.pc-plan-card-desc {
+  font-size: 10px;
+  line-height: 1.5;
+  color: var(--neutral-1);
+  margin-bottom: 8px;
+  flex: 1;
+}
+.pc-plan-card-link {
+  font-size: 10px;
+  color: var(--verde-medio);
+  font-weight: 600;
+  text-decoration: none;
+}
+.pc-plan-card-link::before { content: '✓ '; }
+
+.pc-plan-card-acc {
+  background: #fff;
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-bottom: 6px;
+  font-size: 9px;
+}
+.pc-plan-card-acc-title {
+  background: var(--azul-visual);
+  color: #2563eb;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 8px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+.pc-plan-card-pills {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.pc-plan-card-pills span {
+  font-size: 9px;
+  font-weight: 500;
+}
+.pc-plan-card-pills .ok { color: var(--verde-medio); }
+.pc-plan-card-pills .warn { color: #D8A721; }
+.pc-plan-card-pills .err { color: #C44A38; }
+.pc-plan-card-pills .ok::before { content: '✓ '; }
+.pc-plan-card-pills .warn::before { content: '⚠ '; }
+.pc-plan-card-pills .err::before { content: '✕ '; }
+
+.pc-plan-ai-why {
+  background: var(--naranja-suave);
+  color: #b8410d;
+  font-size: 8px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 6px;
+}
+.pc-plan-ai-tag {
+  background: var(--naranja-cta);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 999px;
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+.pc-plan-summary {
+  background: linear-gradient(180deg, #34C89B 0%, #1F9670 100%);
+  color: #fff;
+  border-radius: 999px;
+  padding: 8px 22px;
+  font-size: 10px;
+  font-weight: 600;
+  margin: 0 auto 18px;
+  display: inline-flex;
+  text-align: center;
+  align-items: center;
+  gap: 4px;
+  width: fit-content;
+}
+.pc-plan-summary-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+/* Footer + landing */
+.landing-footer {
+  text-align: center;
+  padding: 22px 24px 60px;
+  color: rgba(255,255,255,0.55);
+  font-size: 12px;
+  line-height: 1.6;
+}
+.landing-footer strong { color: rgba(255,255,255,0.85); }
+
+@media (max-width: 760px) {
+  .browser { width: 96vw; height: 70vh; }
+  .pc-onb-right { padding: 24px; }
+  .pc-onb h1 { font-size: 22px; }
+  .pc-home-body { padding: 16px 22px 22px; }
+  .pc-detail-body { grid-template-columns: 1fr; padding: 18px 24px 24px; }
+  .pc-form-body { grid-template-columns: 1fr; padding: 18px 22px 24px; }
+  .pc-plan-stops { grid-template-columns: 1fr; }
+  .pc-stops-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="landing-header">
+  <div class="brand">
+    <div class="brand-logo">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 22h20L12 2zm0 4l7 14H5l7-14z"/></svg>
+    </div>
+    <div class="brand-name">Veyve</div>
+  </div>
+  <h1>Versión escritorio · Itinerario Viajes</h1>
+  <p>Sistema de viajes responsivo con 7 vistas adaptadas a pantalla grande, sidebar, layouts en grid y todas las opciones de accesibilidad.</p>
+</div>
+
+<div class="mode-switch">
+  <a href="index.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
+    Móvil
+  </a>
+  <a href="#" class="active">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="14" rx="2"/><line x1="8" y1="22" x2="16" y2="22"/><line x1="12" y1="18" x2="12" y2="22"/></svg>
+    Escritorio
+  </a>
+</div>
+
+<div class="nav-pills">
+  <div class="nav-pill active" data-target="p1"><span class="num">1</span>Onboarding</div>
+  <div class="nav-pill" data-target="p2"><span class="num">2</span>Inicio</div>
+  <div class="nav-pill" data-target="p3"><span class="num">3</span>Ruta</div>
+  <div class="nav-pill" data-target="p4"><span class="num">4</span>Modal añadir</div>
+  <div class="nav-pill" data-target="p5"><span class="num">5</span>Resumen</div>
+  <div class="nav-pill" data-target="p6"><span class="num">6</span>Formulario IA</div>
+  <div class="nav-pill" data-target="p7"><span class="num">7</span>Plan accesible</div>
+</div>
+
+<div class="gallery-container">
+<div class="gallery" id="gallery">
+
+  <!-- ========== SCREEN 1 — ONBOARDING PC ========== -->
+  <div class="pc-slot" id="p1">
+    <div class="browser">
+      <div class="browser-bar">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">veyve.app/onboarding</div>
+      </div>
+      <div class="app-shell" style="background:#fff">
+        <div class="pc-onb">
+          <div class="pc-onb-left">
+            <div class="pc-onb-skyline">
+              <svg viewBox="0 0 600 300" preserveAspectRatio="none">
+                <path fill="rgba(0,60,40,0.6)" d="M0,300 L0,180 L20,165 L25,140 L30,165 L45,165 L45,130 L60,130 L60,150 L75,150 L75,110 L90,110 L90,140 L100,135 L100,90 L115,90 L115,130 L130,128 L135,100 L150,100 L155,80 L170,80 L175,110 L195,110 L195,140 L215,140 L215,100 L230,100 L235,130 L255,128 L260,90 L280,90 L285,120 L300,120 L300,80 L320,80 L325,105 L340,105 L350,75 L370,75 L375,100 L390,100 L395,130 L415,128 L420,100 L440,100 L445,135 L465,135 L470,110 L490,110 L490,150 L510,150 L515,130 L535,130 L535,160 L555,160 L560,140 L580,140 L585,170 L600,170 L600,300 Z"/>
+                <circle cx="55" cy="60" r="14" fill="rgba(255,255,255,0.18)"/>
+              </svg>
+            </div>
+            <div class="pc-onb-left-text">
+              <h2>Tu próxima aventura<br/>empieza aquí</h2>
+              <p>Descubre destinos increíbles y crea itinerarios personalizados para vivir experiencias únicas</p>
+            </div>
+          </div>
+          <div class="pc-onb-right">
+            <div class="pc-onb-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/></svg>
+              Viajes
+            </div>
+            <h1>Explora nuevos destinos<br/>con todo lo esencial en<br/>tu mano</h1>
+            <p class="pc-onb-sub">Viaja por todo el mundo con solo un clic y disfruta de tus mejores vacaciones</p>
+            <ul class="pc-onb-list">
+              <li><span class="pc-onb-check">✓</span>Itinerarios personalizados según tus preferencias</li>
+              <li><span class="pc-onb-check">✓</span>Información completa de cada destino</li>
+              <li><span class="pc-onb-check">✓</span>Opciones de accesibilidad adaptadas a ti</li>
+            </ul>
+            <button class="pc-onb-cta" onclick="goTo('p2')">
+              Empezar
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" width="14" height="14"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+            <div class="pc-onb-link">¿Ya tienes una cuenta? <a href="#" onclick="event.preventDefault()">Inicia sesión</a></div>
+            <div class="pc-onb-paging"><span></span><span class="active"></span><span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pc-caption"><span class="num">1</span>Onboarding · Bienvenida con beneficios</div>
+  </div>
+
+  <!-- ========== SCREEN 2 — INICIO PC ========== -->
+  <div class="pc-slot" id="p2">
+    <div class="browser">
+      <div class="browser-bar">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">veyve.app/inicio</div>
+      </div>
+      <div class="app-shell">
+        <div class="sidebar">
+          <div class="sidebar-top">
+            <div class="sidebar-brand">Viajes</div>
+            <div class="sidebar-close">×</div>
+          </div>
+          <div class="sidebar-menu">
+            <div class="sidebar-item active">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-9 9 9v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+              Inicio
+            </div>
+            <div class="sidebar-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7l10-5 10 5-10 5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+              Itinerarios
+            </div>
+            <div class="sidebar-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+              Mis Viajes
+            </div>
+            <div class="sidebar-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1.51-1A1.65 1.65 0 0 0 6 20l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82A1.65 1.65 0 0 0 1.7 14H1a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1-1.51A1.65 1.65 0 0 0 1.46 6l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0L4.29 3a1.65 1.65 0 0 0 1.82.33H6a1.65 1.65 0 0 0 1-1.51V1a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33L13.94 3a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V8a1.65 1.65 0 0 0 1.51 1H22a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              Configuración
+            </div>
+          </div>
+          <div class="sidebar-user">
+            <div class="sidebar-avatar">A</div>
+            <div class="sidebar-user-text"><strong>Anai</strong><span>Ver perfil</span></div>
+          </div>
+        </div>
+        <div class="main">
+          <div class="pc-home-hero">
+            <h1>Bienvenida, Anai</h1>
+            <p>¿A dónde quieres ir?</p>
+            <div class="pc-home-search">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+              <input placeholder="Buscar destinos, ciudades, países..."/>
+              <div class="pc-home-filter">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="7" y1="12" x2="17" y2="12"/><line x1="10" y1="18" x2="14" y2="18"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="pc-home-body">
+            <div class="pc-home-tabs">
+              <div class="pc-home-tab active">Popular</div>
+              <div class="pc-home-tab">Todo</div>
+              <div class="pc-home-tab">Recomendados</div>
+              <div class="pc-home-tab">Más visitado</div>
+            </div>
+            <div class="pc-home-grid">
+              <div class="pc-home-card" onclick="goTo('p3')">
+                <div class="pc-home-card-img caceres">
+                  <div class="pc-home-card-rating">4.9</div>
+                </div>
+                <div class="pc-home-card-info">
+                  <div>
+                    <h3>Cáceres</h3>
+                    <p>España, Extremadura</p>
+                  </div>
+                  <span class="pc-home-card-rating-side">4.9</span>
+                </div>
+              </div>
+              <div class="pc-home-card">
+                <div class="pc-home-card-img monteria">
+                  <div class="pc-home-card-rating">4.8</div>
+                </div>
+                <div class="pc-home-card-info">
+                  <div>
+                    <h3>Montería</h3>
+                    <p>Colombia, Córdoba</p>
+                  </div>
+                  <span class="pc-home-card-rating-side">4.8</span>
+                </div>
+              </div>
+            </div>
+            <div class="pc-home-section-head">
+              <h2>Especial para ti</h2>
+              <a href="#" onclick="event.preventDefault()">Explorar →</a>
+            </div>
+            <div class="pc-home-features">
+              <div class="pc-feat-card">
+                <div class="pc-feat-card-img cartagena"></div>
+                <div class="pc-feat-card-info"><h4>Cartagena de Indias</h4><p>Colombia, Bolívar</p></div>
+              </div>
+              <div class="pc-feat-card">
+                <div class="pc-feat-card-img bali"></div>
+                <div class="pc-feat-card-info"><h4>Bolona Sky Bridge</h4><p>Bali, Indonesia</p></div>
+              </div>
+              <div class="pc-feat-card">
+                <div class="pc-feat-card-img santorini"></div>
+                <div class="pc-feat-card-info"><h4>Santorini</h4><p>Grecia, Islas Cícladas</p></div>
+              </div>
+              <div class="pc-feat-card">
+                <div class="pc-feat-card-img machu"></div>
+                <div class="pc-feat-card-info"><h4>Machu Picchu</h4><p>Perú, Cusco</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pc-caption"><span class="num">2</span>Inicio · Home con buscador y destinos</div>
+  </div>
+
+  <!-- ========== SCREEN 3 — RUTA / TEATRO ROMANO PC ========== -->
+  <div class="pc-slot" id="p3">
+    <div class="browser">
+      <div class="browser-bar">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">veyve.app/destino/teatro-romano-merida</div>
+      </div>
+      <div class="app-shell">
+        <div class="sidebar">
+          <div class="sidebar-top">
+            <div class="sidebar-brand">Viajes</div>
+            <div class="sidebar-close">×</div>
+          </div>
+          <div class="sidebar-menu">
+            <div class="sidebar-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-9 9 9v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+              Inicio
+            </div>
+            <div class="sidebar-item active">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7l10-5 10 5-10 5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+              Itinerarios
+            </div>
+            <div class="sidebar-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
+              Mis Viajes
+            </div>
+            <div class="sidebar-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4 12H2M22 12h-2"/></svg>
+              Configuración
+            </div>
+          </div>
+          <div class="sidebar-user">
+            <div class="sidebar-avatar">A</div>
+            <div class="sidebar-user-text"><strong>Anai</strong><span>Ver perfil</span></div>
+          </div>
+        </div>
+        <div class="main">
+          <div class="pc-detail-hero">
+            <div class="pc-detail-back" onclick="goTo('p2')">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m15 18-6-6 6-6"/></svg>
+            </div>
+            <div class="pc-detail-fav">
+              <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </div>
+            <div class="pc-detail-hero-title">
+              <div>
+                <h1>Teatro Romano de Mérida</h1>
+                <div class="pc-detail-rating"><strong>4.9</strong> (2.7K reseñas)</div>
+              </div>
+              <div class="pc-detail-price">
+                <h2>13,00 €</h2>
+                <small>* Costo estimado</small>
+              </div>
+            </div>
+          </div>
+          <div class="pc-detail-body">
+            <div>
+              <div class="pc-detail-stats">
+                <div class="pc-detail-stat">
+                  <div class="pc-detail-stat-ico">📅</div>
+                  <div class="pc-detail-stat-text"><strong>6 Días</strong><span>Duración</span></div>
+                </div>
+                <div class="pc-detail-stat">
+                  <div class="pc-detail-stat-ico green">📍</div>
+                  <div class="pc-detail-stat-text"><strong>100 KM</strong><span>Distancia</span></div>
+                </div>
+                <div class="pc-detail-stat">
+                  <div class="pc-detail-stat-ico yellow">☀</div>
+                  <div class="pc-detail-stat-text"><strong>24°C</strong><span>Soleado</span></div>
+                </div>
+              </div>
+              <div class="pc-detail-tabs">
+                <div class="pc-detail-tab active">Descripción</div>
+                <div class="pc-detail-tab">Detalles</div>
+                <div class="pc-detail-tab">Reseñas</div>
+              </div>
+              <p class="pc-detail-desc">Uno de los teatros romanos mejor conservados del mundo. Fue escenario de obras de Séneca y Terencio. Su construcción data del año 16-15 a.C. bajo el mandato del cónsul Marco Vipsanio Agripa.</p>
+              <p class="pc-detail-desc">El teatro tiene capacidad para 6.000 espectadores y se encuentra en un excelente estado de conservación. Actualmente es sede del Festival Internacional de Teatro Clásico de Mérida, celebrado cada verano desde 1933.</p>
+              <p class="pc-detail-desc">Declarado Patrimonio de la Humanidad por la UNESCO en 1993, forma parte del conjunto arqueológico de Mérida que incluye también el anfiteatro, el circo romano y otros monumentos de época romana.</p>
+              <div class="pc-detail-gallery">
+                <h3>Galería</h3>
+                <div class="pc-detail-gallery-row">
+                  <div></div><div></div><div></div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="pc-detail-side-card">
+                <h3>¿Listo para explorar?</h3>
+                <ul>
+                  <li>Acceso prioritario</li>
+                  <li>Guía turístico incluido</li>
+                  <li>Cancelación gratuita</li>
+                </ul>
+                <button class="pc-side-cta" onclick="goTo('p5')">Reserva ahora</button>
+                <button class="pc-side-cta outline">Agregar a favoritos</button>
+              </div>
+              <div class="pc-detail-info-card">
+                <h4>Horarios</h4>
+                <p>Lunes a Domingo: 9:00 - 18:00</p>
+              </div>
+              <div class="pc-detail-info-card">
+                <h4>Ubicación</h4>
+                <p>Calle José Ramón Mélida, s/n, 06800 Mérida, Badajoz</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pc-caption"><span class="num">3</span>Ruta · Detalle del Teatro Romano de Mérida</div>
+  </div>
+
+  <!-- ========== SCREEN 4 — MODAL AÑADIR PARADA ========== -->
+  <div class="pc-slot" id="p4">
+    <div class="browser">
+      <div class="browser-bar">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">veyve.app/itinerario/añadir-parada</div>
+      </div>
+      <div class="app-shell">
+        <div class="sidebar">
+          <div class="sidebar-top">
+            <div class="sidebar-brand">Viajes</div>
+            <div class="sidebar-close">×</div>
+          </div>
+          <div class="sidebar-menu">
+            <div class="sidebar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-9 9 9v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Inicio</div>
+            <div class="sidebar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7l10-5 10 5-10 5z"/></svg>Itinerarios</div>
+            <div class="sidebar-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>Mis Viajes</div>
+            <div class="sidebar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg>Configuración</div>
+          </div>
+          <div class="sidebar-user">
+            <div class="sidebar-avatar">A</div>
+            <div class="sidebar-user-text"><strong>Anai</strong><span>Ver perfil</span></div>
+          </div>
+        </div>
+        <div class="pc-modal-bg">
+          <div class="pc-modal-overlay"></div>
+          <div class="pc-modal-window">
+            <div class="pc-modal-head">
+              <div>
+                <h3>Buscar nueva parada</h3>
+                <p>Encuentra lugares que aún no están en tu itinerario</p>
+              </div>
+              <div class="pc-modal-close" onclick="goTo('p5')">×</div>
+            </div>
+            <div class="pc-modal-search">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+              <input placeholder="Buscar lugares por nombre, categoría..."/>
+            </div>
+            <div class="pc-modal-list">
+              <div class="pc-modal-item">
+                <div class="pc-modal-item-pin">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7.59 2 4 5.59 4 10c0 5.5 8 12 8 12s8-6.5 8-12c0-4.41-3.59-8-8-8zm0 11a3 3 0 110-6 3 3 0 010 6z"/></svg>
+                </div>
+                <div class="pc-modal-item-body">
+                  <div class="pc-modal-item-head">
+                    <h4>Acueducto de los Milagros</h4>
+                    <span class="pc-modal-item-rating">4.7</span>
+                  </div>
+                  <div class="pc-modal-item-meta"><span>Patrimonio</span><span>Mérida, Badajoz</span></div>
+                  <p class="pc-modal-item-desc">Impresionante acueducto romano del siglo I d.C. que abastecía de agua a la antigua Emerita Augusta. Sus 38 pilares de granito y ladrillo se alzan majestuosos.</p>
+                  <div class="pc-modal-item-time">~45min</div>
+                </div>
+              </div>
+              <div class="pc-modal-item">
+                <div class="pc-modal-item-pin">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7.59 2 4 5.59 4 10c0 5.5 8 12 8 12s8-6.5 8-12c0-4.41-3.59-8-8-8zm0 11a3 3 0 110-6 3 3 0 010 6z"/></svg>
+                </div>
+                <div class="pc-modal-item-body">
+                  <div class="pc-modal-item-head">
+                    <h4>Circo Romano</h4>
+                    <span class="pc-modal-item-rating">4.5</span>
+                  </div>
+                  <div class="pc-modal-item-meta"><span>Patrimonio</span><span>Mérida, Badajoz</span></div>
+                  <p class="pc-modal-item-desc">Uno de los circos romanos mejor conservados. Con 400 metros de longitud, era el escenario de las carreras de cuadrigas en la antigua Roma.</p>
+                  <div class="pc-modal-item-time">~1h</div>
+                </div>
+              </div>
+              <div class="pc-modal-item">
+                <div class="pc-modal-item-pin">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7.59 2 4 5.59 4 10c0 5.5 8 12 8 12s8-6.5 8-12c0-4.41-3.59-8-8-8zm0 11a3 3 0 110-6 3 3 0 010 6z"/></svg>
+                </div>
+                <div class="pc-modal-item-body">
+                  <div class="pc-modal-item-head">
+                    <h4>Casa del Mitreo</h4>
+                    <span class="pc-modal-item-rating">4.6</span>
+                  </div>
+                  <div class="pc-modal-item-meta"><span>Patrimonio</span><span>Mérida, Badajoz</span></div>
+                  <p class="pc-modal-item-desc">Domus romana del siglo I con impresionantes mosaicos y pinturas murales. Destaca el mosaico cosmogónico, uno de los más importantes de España.</p>
+                  <div class="pc-modal-item-time">~40min</div>
+                </div>
+              </div>
+            </div>
+            <div class="pc-modal-foot">
+              <span class="pc-modal-foot-text">Selecciona un lugar para continuar</span>
+              <div class="pc-modal-foot-buttons">
+                <button class="pc-modal-btn" onclick="goTo('p5')">Cancelar</button>
+                <button class="pc-modal-btn primary disabled">+ Añadir al itinerario</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pc-caption"><span class="num">4</span>Modal · Buscar y añadir nueva parada</div>
+  </div>
+
+  <!-- ========== SCREEN 5 — RESUMEN VIAJE PC ========== -->
+  <div class="pc-slot" id="p5">
+    <div class="browser">
+      <div class="browser-bar">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">veyve.app/itinerario/merida</div>
+      </div>
+      <div class="app-shell">
+        <div class="sidebar">
+          <div class="sidebar-top">
+            <div class="sidebar-brand">Viajes</div>
+            <div class="sidebar-close">×</div>
+          </div>
+          <div class="sidebar-menu">
+            <div class="sidebar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-9 9 9v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Inicio</div>
+            <div class="sidebar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7l10-5 10 5-10 5z"/></svg>Itinerarios</div>
+            <div class="sidebar-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>Mis Viajes</div>
+            <div class="sidebar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg>Configuración</div>
+          </div>
+          <div class="sidebar-user">
+            <div class="sidebar-avatar">A</div>
+            <div class="sidebar-user-text"><strong>Anai</strong><span>Ver perfil</span></div>
+          </div>
+        </div>
+        <div class="main">
+          <div class="topbar">
+            <div class="menu-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+            </div>
+            <div class="topbar-title">Tu Itinerario</div>
+            <div class="topbar-action">Básico</div>
+          </div>
+          <div class="pc-itin-body">
+            <h1 class="pc-itin-title">¿Cuántos días?</h1>
+            <p class="pc-itin-sub">Generamos lo imprescindible de Mérida</p>
+            <div class="pc-itin-label">DÍAS DE VISITA</div>
+            <div class="pc-day-picker">
+              <div class="pc-day-pill">1</div>
+              <div class="pc-day-pill">2</div>
+              <div class="pc-day-pill">3</div>
+              <div class="pc-day-pill active">4</div>
+              <div class="pc-day-pill">5</div>
+              <div class="pc-day-pill add">+</div>
+            </div>
+            <div class="pc-day-banner">Día 4 — Patrimonio romano</div>
+            <div class="pc-stops-grid">
+              <div class="pc-stop-card">
+                <div class="pc-stop-num">1</div>
+                <div class="pc-stop-expand">⛶</div>
+                <h4>Teatro Romano</h4>
+                <div class="pc-stop-meta"><span>Patrimonio · Mañana</span><span>~1h 30min</span></div>
+                <p>Uno de los teatros romanos mejor conservados del mundo. Fue escenario de obras de Séneca y Terencio…</p>
+                <a href="#" onclick="event.preventDefault()">Ver más info →</a>
+              </div>
+              <div class="pc-stop-card">
+                <div class="pc-stop-num">2</div>
+                <div class="pc-stop-expand">⛶</div>
+                <h4>Museo Arte Romano</h4>
+                <div class="pc-stop-meta"><span>Patrimonio · Mañana</span><span>~1h</span></div>
+                <p>La mayor colección de arte romano de España. Diseñado por Rafael Moneo en 1986. Sus galerías acogen esculturas, mosaicos y monedas…</p>
+                <a href="#" onclick="event.preventDefault()">Ver más info →</a>
+              </div>
+              <div class="pc-stop-card">
+                <div class="pc-stop-num">3</div>
+                <div class="pc-stop-expand">⛶</div>
+                <h4>Templo de Diana</h4>
+                <div class="pc-stop-meta"><span>Patrimonio · Mañana</span><span>~1h 30min</span></div>
+                <p>Sus columnas llevan en pie más de 2 000 años. Uno de los templos romanos más completos de la Península Ibérica…</p>
+                <a href="#" onclick="event.preventDefault()">Ver más info →</a>
+              </div>
+              <div class="pc-stop-card">
+                <div class="pc-stop-num">4</div>
+                <div class="pc-stop-expand">⛶</div>
+                <h4>Alcazaba</h4>
+                <div class="pc-stop-meta"><span>Patrimonio · Mañana</span><span>~1h 30min</span></div>
+                <p>La fortaleza árabe más grande de España, construida en el s. IX sobre restos romanos…</p>
+                <a href="#" onclick="event.preventDefault()">Ver más info →</a>
+              </div>
+            </div>
+            <button class="pc-stop-add-btn" onclick="goTo('p4')">Añadir parada</button>
+            <div class="pc-itin-actions">
+              <button class="pc-btn-large orange" onclick="goTo('p6')">Personalizar</button>
+              <button class="pc-btn-large green">Guardar viaje</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pc-caption"><span class="num">5</span>Resumen · Itinerario básico día 4</div>
+  </div>
+
+  <!-- ========== SCREEN 6 — FORMULARIO IA PC ========== -->
+  <div class="pc-slot" id="p6">
+    <div class="browser">
+      <div class="browser-bar">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">veyve.app/itinerario/personalizar</div>
+      </div>
+      <div class="app-shell">
+        <div class="sidebar">
+          <div class="sidebar-top">
+            <div class="sidebar-brand">Viajes</div>
+            <div class="sidebar-close">×</div>
+          </div>
+          <div class="sidebar-menu">
+            <div class="sidebar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-9 9 9v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Inicio</div>
+            <div class="sidebar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7l10-5 10 5-10 5z"/></svg>Itinerarios</div>
+            <div class="sidebar-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>Mis Viajes</div>
+            <div class="sidebar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg>Configuración</div>
+          </div>
+          <div class="sidebar-user">
+            <div class="sidebar-avatar">A</div>
+            <div class="sidebar-user-text"><strong>Anai</strong><span>Ver perfil</span></div>
+          </div>
+        </div>
+        <div class="main">
+          <div class="topbar">
+            <div class="menu-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+            </div>
+            <div class="topbar-title">Personaliza Tu Viaje</div>
+          </div>
+          <div class="pc-form-body">
+            <div>
+              <span class="pc-form-pill">Personalizar</span>
+              <h1 class="pc-form-h1">Cuéntanos más</h1>
+              <p class="pc-form-sub">Generamos lo imprescindible de Mérida</p>
+              <h4>DÍAS DE VISITA</h4>
+              <div class="pc-day-picker">
+                <div class="pc-day-pill">1</div>
+                <div class="pc-day-pill">2</div>
+                <div class="pc-day-pill">3</div>
+                <div class="pc-day-pill active">4</div>
+                <div class="pc-day-pill">5</div>
+                <div class="pc-day-pill add">+</div>
+              </div>
+              <h4>TIPOS DE VIAJE</h4>
+              <div class="pc-chips">
+                <div class="pc-chip active">Cultura</div>
+                <div class="pc-chip active">Naturaleza</div>
+                <div class="pc-chip">Gastronomía</div>
+                <div class="pc-chip">Deporte</div>
+                <div class="pc-chip">Arte</div>
+                <div class="pc-chip">Aventura</div>
+                <div class="pc-chip">Bienestar</div>
+                <div class="pc-chip">Turismo rural</div>
+                <div class="pc-chip">Turismo Urbano</div>
+                <div class="pc-chip">Playa</div>
+                <div class="pc-chip">Relax</div>
+              </div>
+              <h4>¿CON QUIÉN VAS? <small style="font-weight:500;text-transform:none;color:var(--neutral-2);font-size:9px">(opcional)</small></h4>
+              <div class="pc-chips">
+                <div class="pc-chip">Solo</div>
+                <div class="pc-chip active">Pareja</div>
+                <div class="pc-chip">Familia</div>
+                <div class="pc-chip">Amigos</div>
+              </div>
+            </div>
+            <div>
+              <div class="pc-acc-title">
+                <div class="ico">♿</div>
+                <h3>ACCESIBILIDAD</h3>
+                <small>(opcional)</small>
+              </div>
+              <div class="pc-acc-grid">
+                <div class="pc-acc-card visual">
+                  <div class="ico">👁</div>
+                  <span>Visual</span>
+                </div>
+                <div class="pc-acc-card auditiva">
+                  <div class="ico">👂</div>
+                  <span>Auditiva</span>
+                </div>
+                <div class="pc-acc-card motora">
+                  <div class="ico">♿</div>
+                  <span>Motora</span>
+                </div>
+                <div class="pc-acc-card cognitiva">
+                  <div class="ico">🧠</div>
+                  <span>Cognitiva</span>
+                </div>
+              </div>
+              <h4>DATOS EXTRAS <small style="font-weight:500;text-transform:none;color:var(--neutral-2);font-size:9px">(opcional)</small></h4>
+              <textarea class="pc-form-textarea" placeholder="Especifica los datos extras a tener en cuenta en su viaje si lo prefieres..."></textarea>
+            </div>
+            <div class="pc-form-actions">
+              <button class="pc-btn-large orange" onclick="goTo('p7')">Personalizar</button>
+              <button class="pc-btn-large green">Guardar viaje</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pc-caption"><span class="num">6</span>Formulario IA · Personalización con accesibilidad</div>
+  </div>
+
+  <!-- ========== SCREEN 7 — PLAN ACCESIBILIDAD PERSONALIZADO ========== -->
+  <div class="pc-slot" id="p7">
+    <div class="browser">
+      <div class="browser-bar">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">veyve.app/itinerario/plan-accesible</div>
+      </div>
+      <div class="app-shell">
+        <div class="sidebar">
+          <div class="sidebar-top">
+            <div class="sidebar-brand">Viajes</div>
+            <div class="sidebar-close">×</div>
+          </div>
+          <div class="sidebar-menu">
+            <div class="sidebar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l9-9 9 9v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Inicio</div>
+            <div class="sidebar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7l10-5 10 5-10 5z"/></svg>Itinerarios</div>
+            <div class="sidebar-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>Mis Viajes</div>
+            <div class="sidebar-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg>Configuración</div>
+          </div>
+          <div class="sidebar-user">
+            <div class="sidebar-avatar">A</div>
+            <div class="sidebar-user-text"><strong>Anai</strong><span>Ver perfil</span></div>
+          </div>
+        </div>
+        <div class="main">
+          <div class="topbar">
+            <div class="menu-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+            </div>
+            <div class="topbar-title">Tu Itinerario</div>
+            <div class="topbar-action">Básico</div>
+          </div>
+          <div class="pc-plan-body">
+            <div class="pc-plan-tags">
+              <span class="pc-plan-tag-orange">Personalizado · Pareja · 4 días</span>
+              <div class="pc-plan-notice">
+                <div class="pc-plan-notice-ico">♿</div>
+                <div>
+                  <strong>Ruta adaptada para movilidad reducida</strong>
+                  <p>Hemos priorizado accesos sin escaleras, aparcamiento adaptado y rutas pavimentadas. Los puntos con barreras están marcados con aviso.</p>
+                </div>
+              </div>
+            </div>
+            <div class="pc-plan-acc-pill">
+              <span class="ico">♿</span>
+              Motora
+            </div>
+            <div class="pc-day-banner">Día 4 — Patrimonio romano</div>
+            <div class="pc-plan-stops">
+              <div class="pc-plan-card">
+                <div class="pc-plan-card-num">1</div>
+                <div class="pc-plan-card-expand">⛶</div>
+                <h4>Templo de Diana</h4>
+                <div class="pc-plan-card-meta"><span>Patrimonio · Mañana</span><span>~1h 30min</span></div>
+                <p class="pc-plan-card-desc">Sus columnas llevan en pie más de 2 000 años. Uno de los templos romanos más completos de la Península Ibérica…</p>
+                <div class="pc-plan-card-acc">
+                  <div class="pc-plan-card-acc-title"><span>♿</span>ACCESIBILIDAD MOTORA</div>
+                  <div class="pc-plan-card-pills">
+                    <span class="ok">Entrada adaptada</span>
+                    <span class="ok">Parking PMR a 80m</span>
+                    <span class="ok">Rampa lateral</span>
+                    <span class="warn">Zona alta con escalones</span>
+                  </div>
+                </div>
+                <a class="pc-plan-card-link" href="#" onclick="event.preventDefault()">Ver más info →</a>
+              </div>
+              <div class="pc-plan-card">
+                <div class="pc-plan-card-num">2</div>
+                <div class="pc-plan-card-expand">⛶</div>
+                <h4>Museo Arte Romano</h4>
+                <div class="pc-plan-card-meta"><span>Patrimonio · Mañana</span><span>~1h</span></div>
+                <p class="pc-plan-card-desc">La mayor colección de arte romano de España. Diseñado por Rafael Moneo en 1986. Sus galerías acogen esculturas, mosaicos y monedas…</p>
+                <div class="pc-plan-card-acc">
+                  <div class="pc-plan-card-acc-title"><span>♿</span>ACCESIBILIDAD MOTORA</div>
+                  <div class="pc-plan-card-pills">
+                    <span class="ok">100% accesible</span>
+                    <span class="ok">Aseos adaptados</span>
+                    <span class="ok">Ascensor interno</span>
+                    <span class="ok">Sin escalones</span>
+                  </div>
+                </div>
+                <a class="pc-plan-card-link" href="#" onclick="event.preventDefault()">Ver más info →</a>
+              </div>
+              <div class="pc-plan-card ai">
+                <div class="pc-plan-card-num" style="background:var(--naranja-cta)">3</div>
+                <div class="pc-plan-card-expand">⛶</div>
+                <span class="pc-plan-ai-tag">Sugerido por IA</span>
+                <h4>Almuerzo Típico</h4>
+                <div class="pc-plan-ai-why">★ Por qué lo recomendamos</div>
+                <p class="pc-plan-card-desc">Sus columnas llevan en pie más de 2 000 años. Uno de los templos romanos más completos de la Península Ibérica…</p>
+                <div class="pc-plan-card-pills" style="flex-direction:row;flex-wrap:wrap;gap:6px">
+                  <span class="ok">Rampa en entrada</span>
+                  <span class="ok">Aseo adaptado</span>
+                  <span class="ok">Mesas sin obstáculos</span>
+                </div>
+                <a class="pc-plan-card-link" href="#" onclick="event.preventDefault()" style="margin-top:8px;display:inline-block">Ver más info →</a>
+              </div>
+              <div class="pc-plan-card">
+                <div class="pc-plan-card-num">4</div>
+                <div class="pc-plan-card-expand">−</div>
+                <h4>Templo de Diana</h4>
+                <div class="pc-plan-card-meta"><span>Patrimonio · Mañana</span><span>~1h 30min</span></div>
+                <p class="pc-plan-card-desc">Sus columnas llevan en pie más de 2 000 años. Uno de los templos romanos más completos de la Península Ibérica…</p>
+                <div class="pc-plan-card-acc" style="background:#FEE8D6">
+                  <div class="pc-plan-card-acc-title" style="background:var(--naranja-suave);color:#b8410d">⚠ ACCESO AL INTERIOR CON ESCALONES</div>
+                  <p style="font-size:9px;color:#71370d;line-height:1.4">Solo se puede rodear por fuera desde la calle. La visita exterior sigue siendo impresionante.</p>
+                </div>
+                <a class="pc-plan-card-link" href="#" onclick="event.preventDefault()">Ver más info →</a>
+              </div>
+              <div class="pc-plan-card">
+                <div class="pc-plan-card-num">5</div>
+                <div class="pc-plan-card-expand">⛶</div>
+                <h4>Alcazaba</h4>
+                <div class="pc-plan-card-meta"><span>Patrimonio · Mañana</span><span>~1h 30min</span></div>
+                <p class="pc-plan-card-desc">La fortaleza árabe más grande de España, construida en el s. IX sobre restos romanos…</p>
+                <div class="pc-plan-card-acc">
+                  <div class="pc-plan-card-acc-title"><span>♿</span>ACCESIBILIDAD MOTORA</div>
+                  <div class="pc-plan-card-pills">
+                    <span class="ok">Planta baja accesible</span>
+                    <span class="ok">Tienen silla prestable</span>
+                    <span class="err">Resto de torres en peñas</span>
+                    <span class="err">Torres: solo escaleras</span>
+                  </div>
+                </div>
+                <a class="pc-plan-card-link" href="#" onclick="event.preventDefault()">Ver más info →</a>
+              </div>
+            </div>
+            <div class="pc-plan-summary-row">
+              <span class="pc-plan-summary">3 días · 6 paradas · 1 restaurantes · Pareja · ♿ Motora</span>
+            </div>
+            <div class="pc-itin-actions">
+              <button class="pc-btn-large orange" onclick="goTo('p6')">Personalizar</button>
+              <button class="pc-btn-large green">Guardar viaje</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pc-caption"><span class="num">7</span>Plan personalizado con accesibilidad motora</div>
+  </div>
+
+</div>
+</div>
+
+<div class="landing-footer">
+  <strong>Veyve · Versión escritorio</strong><br/>
+  Diseño extraído de Figma · 7 vistas PC con sidebar y top bar verde · Layouts en grid<br/>
+  Usa el conmutador superior para volver a la versión móvil
+</div>
+
+<script>
+  const gallery = document.getElementById('gallery');
+  const pills = document.querySelectorAll('.nav-pill');
+
+  function goTo(id) {
+    const target = document.getElementById(id);
+    if (!target) return;
+    target.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    pills.forEach(p => p.classList.toggle('active', p.dataset.target === id));
+  }
+
+  pills.forEach(pill => {
+    pill.addEventListener('click', () => goTo(pill.dataset.target));
+  });
+
+  const slots = document.querySelectorAll('.pc-slot');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting && e.intersectionRatio > 0.4) {
+        const id = e.target.id;
+        pills.forEach(p => p.classList.toggle('active', p.dataset.target === id));
+      }
+    });
+  }, { root: gallery, threshold: [0.4, 0.6, 0.85] });
+  slots.forEach(s => obs.observe(s));
+</script>
+
+</body>
+</html>
